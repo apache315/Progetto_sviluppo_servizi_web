@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="stage">
+    <div class="label">Chiave teatro: {{ chiave }}</div>
+    <input [(ngModel)]="nome" placeholder="Inserisci nome" />
+    <div class="seating">
+      <div *ngFor="let riga of matrice_platea">
+        <div class="row">
+          <div
+            *ngFor="let oggetto of riga"
+            class="seat"
+            (click)="prenota_posto_platea(oggetto.id, nome, oggetto.posizione)"
+            [ngClass]="{ selected: platea_posti[oggetto.id].occupato }"
+          >
+            {{ oggetto.id }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seating">
+      <div *ngFor="let riga of matrice_palchi">
+        <div class="row">
+          <div
+            *ngFor="let oggetto of riga"
+            class="seat"
+            (click)="prenota_posto_palco(oggetto.id, nome, oggetto.posizione)"
+            [ngClass]="{ selected: palchi_posti[oggetto.id].occupato }"
+          >
+            {{ oggetto.id }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

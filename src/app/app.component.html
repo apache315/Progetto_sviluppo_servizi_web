@@ -1,0 +1,26 @@
+<div class="container" *ngIf="show1 == false">
+  <div class="form">
+    <form *ngIf="show % 2 == 0">
+      <label>Chiave teatro</label>
+      <input [(ngModel)]="chiave" name="chiave" />
+      <button type="submit" (click)="Receivekey(chiave)">Accedi</button>
+      <button (click)="change()">Crea Teatro</button>
+    </form>
+
+    <div class="form" *ngIf="show % 2 == 1">
+      <form #dimensioni="ngForm" (ngSubmit)="Createatro(dimensioni)">
+        <label>File Platea</label>
+        <input type="text" name="file_platea" ngModel required />
+        <label>Posti platea</label>
+        <input type="text" name="posti_platea" ngModel required />
+        <label>File Palchi</label>
+        <input type="text" name="file_palchi" ngModel required />
+        <label>Posti Palchi</label>
+        <input type="text" name="posti_palchi" ngModel required />
+        <button type="submit">Crea</button>
+        <p class="new" (click)="change()">Hai già un teatro?</p>
+      </form>
+    </div>
+  </div>
+</div>
+<app-teatro [chiave]="chiave" [teatro]="teatro" [show1]="show1" *ngIf="show1 == true" ></app-teatro>
